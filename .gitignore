@@ -1,0 +1,240 @@
+# ================================
+# AUTOFARMA - ARCHIVOS A IGNORAR
+# ================================
+
+# Archivos de salida y resultados
+output/
+*.xlsx
+*.xls
+*.csv
+logs/
+temp/
+cache/
+
+# Archivos de configuración sensibles
+.env
+*.env
+config/credentials.json
+config/passwords.txt
+config/api_keys.txt
+
+# Archivos temporales del sistema
+*.tmp
+*.temp
+temp_*
+*_temp.*
+*.log
+*.bak
+*.backup
+
+# Archivos de Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Entornos virtuales
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# IDEs y editores
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.project
+.pydevproject
+
+# Archivos de prueba y desarrollo
+test_*.xlsx
+health_check.xlsx
+test_basico.xlsx
+debug_*.txt
+prueba_*.log
+
+# Archivos de automatización temporal
+screenshot_*.png
+farmatic_search_box.png
+chromedriver.exe
+geckodriver.exe
+*.webdriver
+
+# Archivos de impresión temporal
+temp_label_*.bmp
+temp_Etiqueta_*.bmp
+temp_Albaran_*.txt
+temp_*.pdf
+
+# Archivos del sistema Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+*.cab
+*.msi
+*.msix
+*.msm
+*.msp
+*.lnk
+
+# Archivos de Excel temporales
+~$*.xlsx
+~$*.xls
+
+# Archivos de base de datos
+*.sqlite
+*.db
+*.sqlite3
+
+# Archivos de configuración local
+local_config.py
+local_settings.py
+user_settings.json
+
+# Archivos de credenciales específicos
+farmatic_credentials.txt
+promofarma_login.json
+cofares_config.json
+alliance_settings.json
+hefame_credentials.json
+bidafarma_config.json
+actibios_login.json
+
+# Archivos de monitoreo y logs
+monitoring/
+performance_logs/
+error_logs/
+trace_logs/
+automation_logs/
+
+# Archivos de respaldo automático
+backup_*/
+*_backup_*
+restore_point_*
+
+# Archivos de navegador y Selenium
+selenium_logs/
+chrome_user_data/
+firefox_profile/
+browser_cache/
+
+# Archivos específicos de la farmacia
+inventario_*.xlsx
+pedidos_procesados_*.xlsx
+sincronizacion_inventario_*.xlsx
+reporte_farmacia_*.xlsx
+inventario_actualizado_*.xlsx
+
+# Archivos de alerta
+human_factor_alerts.log
+error_alerts.log
+system_alerts.log
+
+# Certificados y claves
+*.pem
+*.key
+*.crt
+*.cert
+certificates/
+
+# Archivos de configuración de impresora
+printer_config.json
+print_queue/
+
+# Archivos de desarrollo y testing
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+.nox/
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# pyenv
+.python-version
+
+# pipenv
+Pipfile.lock
+
+# poetry
+poetry.lock
+
+# PEP 582
+__pypackages__/
+
+# Celery
+celerybeat-schedule
+celerybeat.pid
+
+# SageMath parsed files
+*.sage.py
+
+# Environments
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# mkdocs documentation
+/site
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Pyre type checker
+.pyre/
+
+# pytype static type analyzer
+.pytype/
+
+# Cython debug symbols
+cython_debug/
+
+# ================================
+# ARCHIVOS ESPECÍFICOS AUTOFARMA
+# ================================
+
+# Archivos de datos sensibles
+datos_farmacia/
+informacion_productos/
+listado_precios/
+
+# Configuraciones específicas del usuario
+mi_configuracion.json
+configuracion_personal.py
+
+# Archivos de prueba específicos
+test_productos.xlsx
+prueba_trace_*.json
