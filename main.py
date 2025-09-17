@@ -10,6 +10,7 @@ from core.automation_manager import AutomationManager
 from core.web_controller import WebController
 from core.excel_manager import ExcelManager
 from core.printer_manager import PrinterManager
+from core.trace_manager import TraceManager
 from api.routes import automation_routes
 
 app = FastAPI(
@@ -35,6 +36,7 @@ app.include_router(automation_routes.router, prefix="/api/v1")
 
 # Instancias globales de los managers
 automation_manager = AutomationManager()
+trace_manager = TraceManager(automation_manager)  # NUEVO
 web_controller = WebController()
 excel_manager = ExcelManager()
 printer_manager = PrinterManager()
@@ -60,6 +62,21 @@ async def health_check():
         },
         "timestamp": datetime.now().isoformat()
     }
+
+@app.post("/api/v1/trace/start")
+async def start_trace(trace_config: dict):
+    """Iniciar una traza completa"""
+    result = trace_manager.start_full_trace(trace_config)
+    return result
+
+@app.get("/api/v1/trace/{trace_id}")
+async def get_trace_status(trace_id: str):
+    """Obtener estado de una traza"""
+    status = trace_manager.get_trace_status(trace_id)
+    if status:
+        return status
+    else:
+        raise HTTPException(status_code=404, detail="Traza no encontrada")
 
 if __name__ == "__main__":
     uvicorn.run(

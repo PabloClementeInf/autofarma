@@ -199,3 +199,83 @@ class WebController:
         except Exception as e:
             self.logger.error(f"Error en compra Actibios: {e}")
             return {"success": False, "error": str(e)}
+    
+    def query_binary_dashboard(self, config: Dict) -> Dict:
+        """Consultar Binary Dashboard"""
+        try:
+            ean = config.get("ean")
+            fields = config.get("fields", [])
+            
+            # URL de tu dashboard local (cambiar por la real)
+            dashboard_url = "http://localhost:3000/api/products"  # Ejemplo
+            
+            # Por ahora simulamos respuesta
+            product_info = {
+                "ean": ean,
+                "own_stock": 5,  # Ejemplo
+                "cn": "12345678",
+                "description": "Producto de ejemplo",
+                "iva": 21,
+                "laboratory": "Lab Example",
+                "family": "Medicamentos"
+            }
+            
+            return {
+                "success": True,
+                "product_info": product_info
+            }
+            
+        except Exception as e:
+            self.logger.error(f"Error consultando Binary Dashboard: {e}")
+            return {"success": False, "error": str(e)}
+    
+    def search_by_cn(self, distributor: str, cn: str) -> Dict:
+        """Buscar por CN en distribuidor específico"""
+        try:
+            if distributor == "cofares":
+                return self._search_cofares_by_cn(cn)
+            elif distributor == "alliance":
+                return self._search_alliance_by_cn(cn)
+            elif distributor == "hefame":
+                return self._search_hefame_by_cn(cn)
+            elif distributor == "bidafarma":
+                return self._search_bidafarma_by_cn(cn)
+            else:
+                return {"success": False, "error": f"Distribuidor {distributor} no soportado"}
+                
+        except Exception as e:
+            return {"success": False, "error": str(e)}
+    
+    def _search_cofares_by_cn(self, cn: str) -> Dict:
+        """Buscar por CN en Cofares"""
+        # Implementar búsqueda específica en Cofares
+        return {"success": True, "found": True, "price": 25.00}
+    
+    def _search_alliance_by_cn(self, cn: str) -> Dict:
+        """Buscar por CN en Alliance"""
+        # Implementar búsqueda específica en Alliance
+        return {"success": True, "found": True, "price": 24.50}
+    
+    def _search_hefame_by_cn(self, cn: str) -> Dict:
+        """Buscar por CN en Hefame"""
+        # Implementar búsqueda específica en Hefame
+        return {"success": True, "found": False}
+    
+    def _search_bidafarma_by_cn(self, cn: str) -> Dict:
+        """Buscar por CN en BidaFarma"""
+        # Implementar búsqueda específica en BidaFarma
+        return {"success": True, "found": True, "price": 26.00}
+    
+    def register_product_binary(self, registration_data: Dict) -> Dict:
+        """Registrar producto en Binary Dashboard"""
+        try:
+            # Implementar registro en Binary
+            # Por ahora simulamos éxito
+            
+            return {
+                "success": True,
+                "message": "Producto registrado en Binary Dashboard"
+            }
+            
+        except Exception as e:
+            return {"success": False, "error": str(e)}

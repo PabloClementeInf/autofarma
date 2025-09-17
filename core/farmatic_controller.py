@@ -122,3 +122,99 @@ class FarmaticController:
         except Exception as e:
             self.logger.error(f"Error actualizando stock: {e}")
             return {"success": False, "error": str(e)}
+    
+    def get_order_list(self, config: Dict) -> Dict:
+        """Obtener lista de pedidos desde Farmatic"""
+        try:
+            if not self.activate_farmatic():
+                return {"success": False, "error": "No se pudo activar Farmatic"}
+            
+            # Navegar a la sección de pedidos
+            # Ajustar según interfaz específica de Farmatic
+            
+            # Por ahora retornamos datos de ejemplo
+            sample_orders = [
+                {
+                    "id": "PED001",
+                    "ean": "8470001234567",
+                    "quantity": 2,
+                    "status": "pending"
+                },
+                {
+                    "id": "PED002", 
+                    "ean": "8470001234568",
+                    "quantity": 1,
+                    "status": "pending"
+                }
+            ]
+            
+            return {
+                "success": True,
+                "orders": sample_orders
+            }
+            
+        except Exception as e:
+            self.logger.error(f"Error obteniendo pedidos: {e}")
+            return {"success": False, "error": str(e)}
+    
+    def manage_wallet(self, config: Dict) -> Dict:
+        """Gestionar cartera (añadir/quitar productos)"""
+        try:
+            action = config.get("action")
+            wallet_type = config.get("wallet_type")
+            cn = config.get("cn")
+            
+            if not self.activate_farmatic():
+                return {"success": False, "error": "No se pudo activar Farmatic"}
+            
+            # Implementar según interfaz de Farmatic
+            # Por ahora simulamos éxito
+            
+            return {
+                "success": True,
+                "message": f"CN {cn} añadido a cartera {wallet_type}"
+            }
+            
+        except Exception as e:
+            return {"success": False, "error": str(e)}
+    
+    def check_wallet_result(self, config: Dict) -> Dict:
+        """Verificar resultado en cartera"""
+        try:
+            # Implementar verificación específica
+            # Por ahora retornamos datos de ejemplo
+            
+            return {
+                "success": True,
+                "suppliers": [
+                    {"name": "promofarma", "price": 25.50, "margin": 0.15},
+                    {"name": "cofares", "price": 26.00, "margin": 0.12}
+                ]
+            }
+            
+        except Exception as e:
+            return {"success": False, "error": str(e)}
+    
+    def assign_supplier(self, order_id: str, supplier: Dict) -> Dict:
+        """Asignar proveedor a pedido"""
+        try:
+            # Implementar asignación específica
+            return {
+                "success": True,
+                "message": f"Proveedor {supplier.get('name')} asignado a {order_id}"
+            }
+            
+        except Exception as e:
+            return {"success": False, "error": str(e)}
+    
+    def reload_and_send(self, order_id: str) -> Dict:
+        """Recargar y enviar pedido"""
+        try:
+            # Implementar recarga y envío
+            return {
+                "success": True,
+                "message": f"Pedido {order_id} recargado y enviado"
+            }
+            
+        except Exception as e:
+            return {"success": False, "error": str(e)}
